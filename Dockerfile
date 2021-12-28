@@ -12,6 +12,6 @@ COPY src src
 
 RUN gradle build
 
-FROM openjdk:17
+FROM openjdk:17-slim
 COPY --from=0 /home/gradle/build/libs/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
