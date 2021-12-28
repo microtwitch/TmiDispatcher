@@ -2,11 +2,10 @@ version: '3.5'
 
 services:
   tmi-receiver:
-    image: microtwitch/tmi-dispatcher:latest
+    image: m4tthewde/tmi-dispatcher:latest
     container_name: tmi-dispatcher
     environment:
       - GRPC_SERVER_PORT=7070
-
 
 networks:
   default:
