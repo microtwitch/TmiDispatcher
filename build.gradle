@@ -1,37 +1,19 @@
-buildscript {
-    ext {
-        springBootVersion = '2.6.2'
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
-
 plugins {
     id 'java'
-    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'org.springframework.boot' version "2.6.7"
 }
 
-group 'org.example'
+group 'de.com.fdm'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-jar {
-    enabled = false
-}
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
-    implementation('net.devh:grpc-server-spring-boot-starter:2.13.0.RELEASE')
-    implementation('de.com.fdm:TmiReceiverInterface') {
-        version {
-            branch = 'master'
-        }
-    }
-    implementation("com.github.twitch4j:twitch4j:1.7.0")
+    implementation("org.springframework.boot:spring-boot-starter:2.6.7")
+    implementation("com.github.twitch4j:twitch4j:1.9.0")
+    implementation("org.redisson:redisson:3.17.1")
 }
 
 test {

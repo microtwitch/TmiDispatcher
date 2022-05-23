@@ -1,6 +1,5 @@
 package de.com.fdm.tmi;
 
-import de.com.fdm.grpc.dispatcher.lib.OutboundMessage;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -13,11 +12,12 @@ public class SenderManager {
         this.senders = new HashMap<>();
     }
 
-    public void send(OutboundMessage msg) {
-        if (!this.senders.containsKey(msg.getName())) {
-            this.senders.put(msg.getName(), new Sender(msg.getAuth()));
+    public void send(TMIMessage msg) {
+        if (!this.senders.containsKey(msg.name())) {
+            Sender sender = new Sender(msg.auth());
+            this.senders.put(msg.name(), sender);
         }
 
-        this.senders.get(msg.getName()).send(msg);
+        this.senders.get(msg.name()).send(msg);
     }
 }
